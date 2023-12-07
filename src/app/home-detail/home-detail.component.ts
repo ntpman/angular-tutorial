@@ -2,12 +2,13 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housing-location';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-detail',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './home-detail.component.html',
   styleUrl: './home-detail.component.css'
 })
@@ -21,10 +22,13 @@ export class HomeDetailComponent {
 
   firstName: string = '';
   lastName: string = '';
+  email: string = '';
+  errorMsg: string = '';
 
   applicationForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.email]),
   });
 
   constructor () {
@@ -34,10 +38,16 @@ export class HomeDetailComponent {
   }
 
   submitForm() {
-    this.firstName =
-      this.applicationForm.value.firstName!;
-    this.lastName =
-      this.applicationForm.value.lastName!;
+    if(this.applicationForm.valid) {
+      this.firstName =
+        this.applicationForm.value.firstName!;
+      this.lastName =
+        this.applicationForm.value.lastName!;
+      this.email =
+        this.applicationForm.value.email!;
+    } else {
+      this.errorMsg = 'Form validation failed';
+    }
   }
 
 }

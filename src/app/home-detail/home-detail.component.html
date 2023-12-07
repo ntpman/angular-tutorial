@@ -9,12 +9,29 @@
 
 <section>
   <form [formGroup]="applicationForm">
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" formControlName="firstName">
-    <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" formControlName="lastName">
+    <div>
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" formControlName="firstName">
+      <span *ngIf="applicationForm.controls.firstName.invalid" style="color: red;">please enter a first name</span>
+
+    </div>
+
+    <div>
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" formControlName="lastName">
+      <span *ngIf="applicationForm.controls.lastName.invalid" style="color: red;">please enter a last name</span>
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+    <input type="text" id="email" formControlName="email">
+    <span *ngIf="applicationForm.controls.email.invalid" style="color: red;">no form email</span>
+    </div>
+
     <button type="button" (click)="submitForm()">Submit</button>
   </form>
 </section>
 
 {{ firstName }}  {{ lastName }}
+
+<p>{{ errorMsg }}</p>

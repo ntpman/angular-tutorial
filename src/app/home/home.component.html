@@ -1,14 +1,10 @@
 <p>home works!</p>
-<form action="">
-  <input
-    type="text"
-    name=""
-    id=""
-  />
-  <button type="button">Search</button>
+<form [formGroup]="searchForm">
+  <input type="text" id="queryString" formControlName="queryString">
+  <button type="button" (click)="search()">Submit</button>
 </form>
 
-<section>
+<section *ngIf="getAllHousingLocations.length > 0">
   <!-- <app-housing-location [housingLocation]="getAllHousingLocations[0]"></app-housing-location> -->
   <!-- <app-housing-location [housingLocation]="getAllHousingLocations[1]"></app-housing-location> -->
   <ul>
@@ -23,3 +19,7 @@
     </li>
   </ul>
 </section>
+
+<div *ngIf="getAllHousingLocations.length == 0">
+  <p style="color: red;">No Data</p>
+</div>

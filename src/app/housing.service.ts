@@ -22,4 +22,10 @@ export class HousingService {
   getAllHousingLocationsById(id: number): HousingLocation {
     return this.housingLocations[id];
   }
+
+  getHousingLocationByName(seachName: string): HousingLocation[] {
+    let locations = this.housingLocations.filter(l => l.name == seachName);
+
+    return locations;
+  }
 }
