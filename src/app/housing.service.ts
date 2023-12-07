@@ -19,7 +19,7 @@ export class HousingService {
     return this.housingLocations;
   }
 
-  getAllHousingLocationsById(id: number): HousingLocation {
+  getAllHousingLocationsById(id: number): HousingLocation | undefined {
     return this.housingLocations[id];
   }
 
