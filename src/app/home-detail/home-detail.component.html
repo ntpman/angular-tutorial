@@ -1,0 +1,20 @@
+<p>home-detail works!</p>
+<ul>
+  <!-- <li>ID: {{ location.id }}</li> -->
+  <!-- <li>Name: {{ location.name }}</li> -->
+  <!-- <li>Tel: {{ location.tel }}</li> -->
+</ul>
+
+<br>
+
+<section>
+  <form [formGroup]="applicationForm">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" formControlName="firstName">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" formControlName="lastName">
+    <button type="button" (click)="submitForm()">Submit</button>
+  </form>
+</section>
+
+{{ firstName }}  {{ lastName }}

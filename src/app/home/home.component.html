@@ -1,0 +1,25 @@
+<p>home works!</p>
+<form action="">
+  <input
+    type="text"
+    name=""
+    id=""
+  />
+  <button type="button">Search</button>
+</form>
+
+<section>
+  <!-- <app-housing-location [housingLocation]="getAllHousingLocations[0]"></app-housing-location> -->
+  <!-- <app-housing-location [housingLocation]="getAllHousingLocations[1]"></app-housing-location> -->
+  <ul>
+    <li *ngFor="let housingLocation of getAllHousingLocations">
+      <a
+        [routerLink]="['detail', housingLocation['id']]"
+        >Read more
+        <app-housing-location
+          [housingLocation]="housingLocation"
+        ></app-housing-location>
+      </a>
+    </li>
+  </ul>
+</section>
